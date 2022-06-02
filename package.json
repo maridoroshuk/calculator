@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node server.js",
+    "start": "react-scripts start",
     "dev": "webpack-dev-server --open --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
     "eslint:test": "eslint src --ext .js,.jsx",
@@ -19,11 +19,11 @@
     "express": "^4.17.1",
     "formik": "^2.0.3",
     "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-loader-spinner": "^3.1.4",
     "react-redux": "^7.1.1",
-    "react-router-dom": "^5.1.2",
+    "react-router-dom": "^6.3.0",
     "redux": "^4.0.4",
     "redux-actions": "^2.6.5",
     "redux-saga": "^1.1.1",
@@ -48,9 +48,10 @@
     "css-loader": "^3.2.0",
     "cypress": "^3.6.0",
     "dotenv-webpack": "^1.7.0",
-    "eslint": "^6.6.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.3.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-config-standard": "^14.1.0",
     "eslint-config-standard-react": "^9.2.0",
     "eslint-plugin-cypress": "^2.7.0",
@@ -73,5 +74,17 @@
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.2",
     "webpack-merge": "^4.2.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

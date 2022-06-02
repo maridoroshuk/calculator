@@ -23,14 +23,4 @@ export default createGlobalStyle`
     }
   }
 
-  body {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-  }
-
-  #root {
-    display: flex;
-    background: linear-gradient(to bottom, #c06c84da, #6c5b7bda);
-  }
 `

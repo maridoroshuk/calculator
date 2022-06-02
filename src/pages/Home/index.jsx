@@ -1,18 +1,20 @@
+import History from '../../containers/Calculator/History'
 import React from 'react'
+import Layout from '../../layouts'
 
-import { PageLayout } from '@/layouts'
 
-import Loader from '@/components/Loader'
 
 import { Card, Heading } from './components'
+import CalculatorPanel from '../../containers/Calculator'
 
-export default () => {
+
+const Home = () => {
   return (
-    <PageLayout>
-      <Card>
-        <Heading id="welcome">Welcome!</Heading>
-        <Loader />
-      </Card>
-    </PageLayout>
+    <React.Fragment>
+      <Layout />
+      <CalculatorPanel />
+    </React.Fragment>
   )
 }
+
+export default Home

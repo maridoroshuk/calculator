@@ -1,20 +1,20 @@
-import React, { lazy, Suspense } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import Loader from '../components/Loader/index'
+import React from 'react'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 
-import { HOME_PAGE_ROUTE } from '@/constants'
+import { HOME_PAGE_ROUTE } from '../constants/router'
+import Home from '../pages/Home'
 
-import Loader from '@/components/Loader'
-
-const HomePage = lazy(() => import('@/pages/Home'))
-
-export default () => (
-  <Suspense fallback={<Loader />}>
-    <Switch>
+const App = () => (
+  <BrowserRouter>
+    <Routes>
       <Route
-        exact
         path={HOME_PAGE_ROUTE}
-        component={HomePage}
+        element={<Home />}
       />
-    </Switch>
-  </Suspense>
+    </Routes>
+  </BrowserRouter>
+
 )
+
+export default App
