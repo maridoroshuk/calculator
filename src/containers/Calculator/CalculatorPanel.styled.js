@@ -3,8 +3,9 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  height: 80vh;
+  text-align: center;
   color: red;
+  margin: 3rem auto;
 `
 export const Panel = styled.section`
   flex: 2;

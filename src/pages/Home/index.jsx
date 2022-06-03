@@ -2,9 +2,6 @@ import History from '../../containers/Calculator/History'
 import React from 'react'
 import Layout from '../../layouts'
 
-
-
-import { Card, Heading } from './components'
 import CalculatorPanel from '../../containers/Calculator'
 
 

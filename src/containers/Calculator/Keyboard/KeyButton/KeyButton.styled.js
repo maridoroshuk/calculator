@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const KeyBtn = styled.button`
   background-color: ${({ theme }) =>
     theme.colors.secondary};
-  border-radius: 20%;
-  width: 60px;
-  height: 60px;
-  border: 0.1rem solid black;
+  border-radius: 50%;
+  width: 6rem;
+  height: 6rem;
+  border: none;
   margin: auto;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 2rem;
   cursor: pointer;
   &:active {
     transform: scale(1.1);

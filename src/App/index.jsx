@@ -1,4 +1,3 @@
-import Loader from '../components/Loader/index'
 import React from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 

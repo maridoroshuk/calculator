@@ -2,8 +2,6 @@ import React from 'react'
 import { Outlet } from 'react-router-dom'
 import { PageLayout, Header, Logo, Container, Button } from './Layout.styled'
 
-import Calculator from '../containers/Calculator'
-
 
 const Layout = () => {
   return (

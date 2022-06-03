@@ -4,15 +4,7 @@ import { KeyboardContainer } from './Keyboard.styled'
 import KeyButton from './KeyButton'
 
 
-const Keyboard = () => {
-  const clearHandler = () => { }
-  const operatorHandler = () => { }
-  const decimalHandler = () => { }
-  const equalsHandler = () => { }
-  const bracketHandler = () => { }
-  const pushToInputHandler = () => { }
-
-
+const Keyboard = ({ clearHandler, operatorHandler, decimalHandler, equalsHandler, bracketHandler, pushToInputHandler }) => {
   return (
     <KeyboardContainer>
       <FunctionButton
