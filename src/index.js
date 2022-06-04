@@ -1,18 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './App'
 import GlobalStyles from './globalStyles'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import theme from './theme'
+import App from './components/App/App'
 import store from './store'
 
 ReactDOM.render(
-  <Provider store={store}>
-    <ThemeProvider theme={theme}>
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
       <App />
-      <GlobalStyles />
-    </ThemeProvider>
-  </Provider>,
+    </Provider>
+    <GlobalStyles />
+  </ThemeProvider>,
   document.getElementById('root'),
 )

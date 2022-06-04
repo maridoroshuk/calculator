@@ -1,21 +1,21 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { PageLayout, Header, Logo, Container, Button } from './Layout.styled'
+import { PageLayout, StyledHeader, Logo, Container, Button } from './Header.styled'
 
 
-const Layout = () => {
+const Header = () => {
   return (
     <PageLayout>
-      <Header>
+      <StyledHeader>
         <Logo>Calculator App</Logo>
         <Container>
           <Button active>Home</Button>
           <Button active>Settings</Button>
         </Container>
-      </Header>
+      </StyledHeader>
       <Outlet />
     </PageLayout>
   )
 }
 
-export default Layout
+export default Header

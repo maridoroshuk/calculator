@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const FunctionBtn = styled.button`
+export const StyledButton = styled.button`
   background-color: ${({ theme }) =>
     theme.colors.secondary};
   border-radius: 50%;

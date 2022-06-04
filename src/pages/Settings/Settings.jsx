@@ -4,9 +4,9 @@ import { PageLayout } from '@/layouts'
 
 import Loader from '@/components/Loader'
 
-import { Card, Heading } from './components'
+import { Card, Heading } from './Settings.styled'
 
-export default () => {
+const Settings = () => {
   return (
     <PageLayout>
       <Card>
@@ -16,3 +16,5 @@ export default () => {
     </PageLayout>
   )
 }
+
+export default Settings

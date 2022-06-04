@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const PageLayout = styled.div``
 
-export const Header = styled.header`
+export const StyledHeader = styled.header`
   width: 100%;
   height: 5rem;
   display: flex;
