@@ -3,10 +3,12 @@ import { useSelector } from 'react-redux'
 import { StyledDisplay } from './Display.styled'
 
 const Display = () => {
-	const expression = useSelector(state => state.calculator.display)
-	console.log(expression)
+	const { value, operator, nextValue, result, input } = useSelector(state => state.calculator)
 	return (
-		<StyledDisplay>{expression}</StyledDisplay>
+		<StyledDisplay>
+			<p>{value} {operator} {nextValue} {result ? '=' : null}</p>
+			<p>{result ?? input}</p>
+		</StyledDisplay>
 	)
 }
 

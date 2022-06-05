@@ -60,6 +60,50 @@ const calculatorSlice = createSlice({
             }
       }
     },
+    getResult(state, { payload }) {
+      const { operator, result } = state
+      if (payload) {
+        state.nextValue = Number(payload)
+      } else if (state.input) {
+        return {
+          ...state,
+          nextValue: Number(state.input),
+          input: '',
+        }
+      }
+      if (result || result === 0) {
+        state.value = result
+      }
+
+      state.result = this.getResult(
+        state.value,
+        operator,
+        state.nextValue,
+      )
+    },
+
+    resetOperaton() {
+      return { ...initialState }
+    },
+    setDot(state) {
+      const prevState = state.input
+      if (prevState.includes('.')) return
+      return prevState === ''
+        ? { ...state, input: '0.' }
+        : { ...state, input: prevState + '.' }
+    },
+    removeNumber(state) {
+      const prevState = state.input
+      state.input = prevState.slice(0, prevState.length - 1)
+    },
+    addNumber(state, { payload }) {
+      if (!Number(payload) && payload !== '0') return state
+      if (state.result || state.input === '0') {
+        return { ...initialState, input: String(payload) }
+      }
+      if (state.input.length > 45) return
+      state.input += String(payload)
+    },
   },
 })
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PageLayout } from '@/layouts'
+import { PageLayout } from '@/components/Header/Header'
 
 import Loader from '@/components/Loader'
 
