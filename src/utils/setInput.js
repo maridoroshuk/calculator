@@ -1,6 +1,6 @@
 import { calculatorActions } from '../store/calculator/calculator-slice'
 
-import { store } from '../store'
+import store from '../store'
 
 export const setInput = (curInput, symbol, operator) => {
   const dispatch = action => {

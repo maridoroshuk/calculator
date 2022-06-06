@@ -1,19 +1,21 @@
 import styled from 'styled-components'
 
 export const StyledDisplay = styled.div`
-  background: #fff;
-  width: 40rem;
-  height: 5rem;
-  border-radius: 0.5rem;
+  grid-column: 1/ -1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  font-size: 1.2rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0.75rem;
+  word-wrap: break-word;
+  word-break: break-all;
+`
 
-  & p {
-    display: block;
-    width: 100%;
-    height: 1rem;
-  }
+export const PrevOperand = styled.div`
+  color: gray;
+  font-size: 1.5rem;
+`
+export const CurOperand = styled.div`
+  color: black;
+  font-size: 2rem;
 `
