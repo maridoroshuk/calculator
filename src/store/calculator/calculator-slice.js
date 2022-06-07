@@ -6,6 +6,7 @@ const initialState = {
   curOperand: null,
   operation: null,
   prevOperand: null,
+  history: [],
 }
 
 const calculatorSlice = createSlice({
@@ -14,24 +15,27 @@ const calculatorSlice = createSlice({
   reducers: {
     addDigit(state, { payload }) {
       if (state.overwrite) {
-        return {
-          ...state,
-          curOperand: payload.digit,
-          overwrite: false,
-        }
-      }
-      if (payload.digit === '0' && state.curOperand === '0')
+        state.curOperand = payload.digit
+        state.overwrite = false
+      } else if (
+        payload.digit === '0' &&
+        state.curOperand === '0'
+      ) {
         return state
-      if (
+      } else if (
+        payload.digit === '.' &&
+        state.curOperand === null
+      ) {
+        state.curOperand = `0${payload.digit}`
+      } else if (
         payload.digit === '.' &&
         state.curOperand.includes('.')
-      )
+      ) {
         return state
-      return {
-        ...state,
-        curOperand: `${state.curOperand || ''}${
+      } else {
+        state.curOperand = `${state.curOperand || ''}${
           payload.digit
-        }`,
+        }`
       }
     },
     chooseOperation(state, { payload }) {
@@ -40,29 +44,16 @@ const calculatorSlice = createSlice({
         state.prevOperand == null
       ) {
         return state
-      }
-
-      if (state.curOperand == null) {
-        return {
-          ...state,
-          operation: payload.operation,
-        }
-      }
-
-      if (state.prevOperand == null) {
-        return {
-          ...state,
-          operation: payload.operation,
-          prevOperand: state.curOperand,
-          curOperand: null,
-        }
-      }
-
-      return {
-        ...state,
-        prevOperand: calculate(state),
-        operation: payload.operation,
-        curOperand: null,
+      } else if (state.curOperand == null) {
+        state.operation = payload.operation
+      } else if (state.prevOperand == null) {
+        state.operation = payload.operation
+        state.prevOperand = state.curOperand
+        state.curOperand = null
+      } else {
+        state.prevOperand = calculate(state)
+        state.operation = payload.operation
+        state.curOperand = null
       }
     },
     evaluate(state, { payload }) {
@@ -72,38 +63,35 @@ const calculatorSlice = createSlice({
         state.prevOperand == null
       ) {
         return state
-      }
+      } else {
+        state.history = [
+          ...state.history,
+          `${state.prevOperand} ${state.operation} ${state.curOperand}`,
+        ]
+        state.curOperand = calculate(state)
+        state.overwrite = true
+        state.prevOperand = null
+        state.operation = null
 
-      return {
-        ...state,
-        overwrite: true,
-        prevOperand: null,
-        operation: null,
-        curOperand: calculate(state),
+        console.log(state.history)
       }
     },
     clear(state) {
-      return initialState
+      state.overwrite = false
+      state.curOperand = null
+      state.operation = null
+      state.prevOperand = null
     },
     deleteDigit(state, { payload }) {
       if (state.overwrite) {
-        return {
-          ...state,
-          overwrite: false,
-          curOperand: null,
-        }
-      }
-      if (state.curOperand == null) return state
-      if (state.curOperand === 1) {
-        return {
-          ...state,
-          curOperand: null,
-        }
-      }
-
-      return {
-        ...state,
-        curOperand: state.curOperand.slice(0, -1),
+        state.overwrite = false
+        state.curOperand = null
+      } else if (state.curOperand == null) {
+        return state
+      } else if (state.curOperand === 1) {
+        state.curOperand = null
+      } else {
+        state.curOperand = state.curOperand.slice(0, -1)
       }
     },
   },

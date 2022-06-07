@@ -1,8 +1,6 @@
 import { calculatorActions } from '../../store/calculator/calculator-slice'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Grid } from './Keypad.styled'
-import { setInput } from '../../utils/setInput'
 import OperationButton from './Button/OperationButton'
 import DigitButton from './Button/DigitButton'
 import { StyledButton } from './Button/Button.styled'
@@ -23,7 +21,7 @@ const Keypad = () => {
 	}
 
 	return (
-		<Grid>
+		<React.Fragment>
 			<StyledButton onClick={deleteDigitHandler}>C</StyledButton>
 			<DigitButton dispatch={dispatch} digit="7" />
 			<DigitButton dispatch={dispatch} digit="8" />
@@ -33,18 +31,18 @@ const Keypad = () => {
 			<DigitButton dispatch={dispatch} digit="4" />
 			<DigitButton dispatch={dispatch} digit="5" />
 			<DigitButton dispatch={dispatch} digit="6" />
-			<OperationButton dispatch={dispatch} operation="\" />
+			<OperationButton dispatch={dispatch} operation="/" />
 			<OperationButton dispatch={dispatch} operation="+" />
 			<DigitButton dispatch={dispatch} digit="1" />
 			<DigitButton dispatch={dispatch} digit="2" />
 			<DigitButton dispatch={dispatch} digit="3" />
 			<StyledButton onClick={evaluateHandler}>=</StyledButton>
 			<DigitButton dispatch={dispatch} digit="." />
-			<StyledButton>&#40;</StyledButton>
+			<DigitButton dispatch={dispatch} digit="(" >&#40;</DigitButton>
 			<DigitButton dispatch={dispatch} digit="0" />
-			<StyledButton>&#41;</StyledButton>
+			<DigitButton dispatch={dispatch} digit=")" >&#41;</DigitButton>
 			<StyledButton onClick={clearHandler}>CE</StyledButton>
-		</Grid >
+		</React.Fragment>
 	)
 }
 

@@ -13,8 +13,16 @@ export const StyledHeader = styled.header`
 `
 
 export const Logo = styled.h2`
-  width: 30%;
-  color: ${({ theme }) => theme.colors.white};
+  & a {
+    color: ${({ theme }) => theme.colors.white};
+    text-decoration: none;
+  }
+
+  & a:link,
+  a:visited {
+    color: ${({ theme }) => theme.colors.white};
+    text-decoration: none;
+  }
 `
 
 export const Container = styled.div`

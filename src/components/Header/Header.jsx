@@ -1,5 +1,5 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Link, Outlet } from 'react-router-dom'
 import { PageLayout, StyledHeader, Logo, Container, Button } from './Header.styled'
 
 
@@ -7,10 +7,16 @@ const Header = () => {
   return (
     <PageLayout>
       <StyledHeader>
-        <Logo>Calculator App</Logo>
+        <Logo>
+          <Link to="/">Calculator App</Link>
+        </Logo>
         <Container>
-          <Button active>Home</Button>
-          <Button active>Settings</Button>
+          <Button active>
+            <Link to="/">Home</Link>
+          </Button>
+          <Button active>
+            <Link to="/settings">Settings</Link>
+          </Button>
         </Container>
       </StyledHeader>
       <Outlet />

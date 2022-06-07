@@ -1,20 +1,21 @@
 import styled from 'styled-components'
 
-export const Card = styled.div`
-  width: 100%;
-  height: 100%;
-
-  background-color: ${({ theme }) => theme.colors.white};
-
-  border-radius: 32px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  box-shadow: ${({ theme }) => theme.boxShadows[0]};
-
-  padding: ${({ theme }) => theme.spaces[4]}px;
+export const HistoryContainer = styled.div`
+  align-self: flex-start;
+  text-align: start;
+  width: 20%;
+  margin: 3rem;
 `
+export const StyledList = styled.ul`
+  display: flex;
+  margin-top: 1rem;
+  list-style-type: none;
+  flex-direction: column-reverse;
 
-export const Heading = styled.h3``
+  & li {
+    margin-top: 1rem;
+  }
+`
+export const Heading = styled.h2`
+  font-size: 2rem;
+`
