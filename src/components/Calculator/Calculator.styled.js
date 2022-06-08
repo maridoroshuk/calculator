@@ -8,5 +8,6 @@ export const Container = styled.div`
   grid-template-columns: repeat(5, 6rem);
   grid-template-rows: minmax(7rem, auto) repeat(1, 6rem);
   grid-gap: 2rem;
-  border-right: 2px solid black;
+  border-right: 2px solid
+    ${({ theme }) => theme.colors.calcColor};
 `

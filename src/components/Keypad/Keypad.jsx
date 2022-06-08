@@ -1,6 +1,6 @@
 import { calculatorActions } from '../../store/calculator/calculator-slice'
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import OperationButton from './Button/OperationButton'
 import DigitButton from './Button/DigitButton'
 import { StyledButton } from './Button/Button.styled'

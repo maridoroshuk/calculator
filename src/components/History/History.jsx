@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { StyledList, HistoryContainer, Heading } from './History.styled'
 
 const History = () => {
   const { history } = useSelector(state => state.calculator)
 
-  console.log(history)
+  useEffect(() => {
+    localStorage.setItem("history", JSON.stringify(history))
+  }, [history])
+
   return (
     <HistoryContainer>
       <Heading>History</Heading>

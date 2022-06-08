@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export const StyledDisplay = styled.div`
   height: 6rem;
   grid-column: 1 / -1;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid
+    ${({ theme }) => theme.colors.calcColor};
   margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
@@ -15,10 +16,10 @@ export const StyledDisplay = styled.div`
 `
 
 export const PrevOperand = styled.div`
-  color: gray;
+  color: ${({ theme }) => theme.colors.calcColor};
   font-size: 1.5rem;
 `
 export const CurOperand = styled.div`
-  color: black;
+  color: ${({ theme }) => theme.colors.calcColor};
   font-size: 2rem;
 `

@@ -1,12 +1,18 @@
 import { calculate } from '../../utils/calculate'
 import { createSlice, current } from '@reduxjs/toolkit'
 
+const localData = JSON.parse(
+  localStorage.getItem('history'),
+)
+
+console.log(localData)
+
 const initialState = {
   overwrite: false,
   curOperand: null,
   operation: null,
   prevOperand: null,
-  history: [],
+  history: localData ?? [],
 }
 
 const calculatorSlice = createSlice({
@@ -14,7 +20,13 @@ const calculatorSlice = createSlice({
   initialState,
   reducers: {
     addDigit(state, { payload }) {
-      if (state.overwrite) {
+      if (
+        payload.digit === '.' &&
+        state.curOperand === null
+      ) {
+        console.log(payload.digit)
+        state.curOperand = `0${payload.digit}`
+      } else if (state.overwrite) {
         state.curOperand = payload.digit
         state.overwrite = false
       } else if (
@@ -22,11 +34,6 @@ const calculatorSlice = createSlice({
         state.curOperand === '0'
       ) {
         return state
-      } else if (
-        payload.digit === '.' &&
-        state.curOperand === null
-      ) {
-        state.curOperand = `0${payload.digit}`
       } else if (
         payload.digit === '.' &&
         state.curOperand.includes('.')
@@ -72,8 +79,6 @@ const calculatorSlice = createSlice({
         state.overwrite = true
         state.prevOperand = null
         state.operation = null
-
-        console.log(state.history)
       }
     },
     clear(state) {
@@ -93,6 +98,9 @@ const calculatorSlice = createSlice({
       } else {
         state.curOperand = state.curOperand.slice(0, -1)
       }
+    },
+    clearHistory(state) {
+      state.history = []
     },
   },
 })

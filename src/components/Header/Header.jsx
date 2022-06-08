@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Outlet } from 'react-router-dom'
 import { PageLayout, StyledHeader, Logo, Container, Button } from './Header.styled'
 
 
 const Header = () => {
+
   return (
     <PageLayout>
       <StyledHeader>

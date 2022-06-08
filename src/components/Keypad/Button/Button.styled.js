@@ -2,7 +2,8 @@ import styled from 'styled-components'
 
 export const StyledButton = styled.button`
   background-color: ${({ theme }) =>
-    theme.colors.secondary};
+    theme.colors.calcColor};
+  color: ${({ theme }) => theme.colors.secondary};
   border-radius: 50%;
   width: 6rem;
   height: 6rem;

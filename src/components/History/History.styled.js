@@ -5,6 +5,7 @@ export const HistoryContainer = styled.div`
   text-align: start;
   width: 20%;
   margin: 3rem;
+  color: ${({ theme }) => theme.colors.calcColor};
 `
 export const StyledList = styled.ul`
   display: flex;

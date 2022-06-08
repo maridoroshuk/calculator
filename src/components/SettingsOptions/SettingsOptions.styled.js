@@ -4,7 +4,9 @@ export const SettingsContainer = styled.div`
   width: 30%;
   margin: 5rem;
 `
-export const SettingsHeading = styled.h2``
+export const SettingsHeading = styled.h2`
+  color: ${({ theme }) => theme.colors.primary};
+`
 export const ThemeSwitcher = styled.div`
   margin: 2rem 0;
 
