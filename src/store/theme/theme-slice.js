@@ -2,8 +2,6 @@ const { createSlice } = require('@reduxjs/toolkit')
 
 const localData = localStorage.getItem('theme')
 
-console.log(localData)
-
 const initialState = {
   theme: localData ?? 'light',
 }

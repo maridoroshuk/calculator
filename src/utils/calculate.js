@@ -1,31 +1,29 @@
-export function calculate({
-  curOperand,
-  prevOperand,
-  operation,
-}) {
-  const prev = parseFloat(prevOperand)
-  const current = parseFloat(curOperand)
+export function calculate(expression) {
+  // const prev = parseFloat(prevOperand)
+  // const current = parseFloat(curOperand)
 
-  if (isNaN(prev) || isNaN(current)) return ''
+  console.log(expression)
 
-  let computation = ''
+  // if (isNaN(prev) || isNaN(current)) return ''
 
-  switch (operation) {
-    case '+':
-      computation = prev + current
-      break
-    case '-':
-      computation = prev - current
-      break
-    case '*':
-      computation = prev * current
-      break
-    case '/':
-      computation = prev / current
-      break
-    default:
-      return null
-  }
+  // let computation = ''
 
-  return computation.toString()
+  // switch (operation) {
+  //   case '+':
+  //     computation = prev + current
+  //     break
+  //   case '-':
+  //     computation = prev - current
+  //     break
+  //   case '*':
+  //     computation = prev * current
+  //     break
+  //   case '/':
+  //     computation = prev / current
+  //     break
+  //   default:
+  //     return null
+  // }
+
+  // return computation.toString()
 }

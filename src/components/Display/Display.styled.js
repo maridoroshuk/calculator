@@ -15,11 +15,7 @@ export const StyledDisplay = styled.div`
   word-break: break-all;
 `
 
-export const PrevOperand = styled.div`
+export const Expression = styled.div`
   color: ${({ theme }) => theme.colors.calcColor};
   font-size: 1.5rem;
-`
-export const CurOperand = styled.div`
-  color: ${({ theme }) => theme.colors.calcColor};
-  font-size: 2rem;
 `
