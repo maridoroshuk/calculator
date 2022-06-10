@@ -8,7 +8,6 @@ function SettingsOptions() {
 	const dispatch = useDispatch()
 	const { theme } = useSelector(state => state.theme)
 	const { history } = useSelector(state => state.calculator)
-	console.log(history)
 
 	const changeThemeHandlet = e => {
 		dispatch(themeActions.changeTheme(e.target.value))

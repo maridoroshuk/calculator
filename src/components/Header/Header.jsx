@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 import { PageLayout, StyledHeader, Logo, Container, Button } from './Header.styled'
 
 
@@ -12,11 +12,11 @@ const Header = () => {
           <Link to="/">Calculator App</Link>
         </Logo>
         <Container>
-          <Button active>
-            <Link to="/">Home</Link>
+          <Button>
+            <NavLink activeClassName="active" to="/">Home</NavLink>
           </Button>
-          <Button active>
-            <Link to="/settings">Settings</Link>
+          <Button >
+            <NavLink activeClassName="active" to="/settings">Settings</NavLink>
           </Button>
         </Container>
       </StyledHeader>

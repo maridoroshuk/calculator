@@ -10,6 +10,10 @@ export const StyledHeader = styled.header`
   align-items: center;
   background-color: ${({ theme }) => theme.colors.primary};
 
+  & .active {
+    border-bottom: 2px solid white;
+  }
+
   & a {
     color: ${({ theme }) => theme.color};
     text-decoration: none;
@@ -37,8 +41,6 @@ export const Button = styled.button`
   border: none;
   display: block;
   background-color: transparent;
-  border-bottom: ${({ active }) =>
-    active ? '2px solid white' : 'none'};
   cursor: pointer;
 
   & a {

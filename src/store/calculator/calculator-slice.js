@@ -5,8 +5,6 @@ const localData = JSON.parse(
   localStorage.getItem('history'),
 )
 
-console.log(localData)
-
 const initialState = {
   overwrite: false,
   curOperand: null,
@@ -20,15 +18,25 @@ const calculatorSlice = createSlice({
   initialState,
   reducers: {
     addDigit(state, { payload }) {
-      if (
+      if (payload.digit === '±') {
+        if (state.curOperand == null) {
+          return state
+        } else {
+          state.curOperand = `-${state?.curOperand}`
+        }
+      } else if (
         payload.digit === '.' &&
         state.curOperand === null
       ) {
-        console.log(payload.digit)
         state.curOperand = `0${payload.digit}`
       } else if (state.overwrite) {
-        state.curOperand = payload.digit
-        state.overwrite = false
+        if (payload.digit === '.') {
+          state.curOperand = `0${payload.digit}`
+          state.overwrite = false
+        } else {
+          state.curOperand = payload.digit
+          state.overwrite = false
+        }
       } else if (
         payload.digit === '0' &&
         state.curOperand === '0'

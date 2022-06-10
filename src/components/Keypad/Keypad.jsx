@@ -38,9 +38,9 @@ const Keypad = () => {
 			<DigitButton dispatch={dispatch} digit="3" />
 			<StyledButton onClick={evaluateHandler}>=</StyledButton>
 			<DigitButton dispatch={dispatch} digit="." />
-			<DigitButton dispatch={dispatch} digit="(" >&#40;</DigitButton>
 			<DigitButton dispatch={dispatch} digit="0" />
-			<DigitButton dispatch={dispatch} digit=")" >&#41;</DigitButton>
+			<OperationButton dispatch={dispatch} operation="%" >%</OperationButton>
+			<DigitButton dispatch={dispatch} digit="±" >±</DigitButton>
 			<StyledButton onClick={clearHandler}>CE</StyledButton>
 		</React.Fragment>
 	)
