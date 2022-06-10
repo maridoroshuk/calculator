@@ -6,6 +6,7 @@ import { ThemeContext, ThemeProvider } from 'styled-components'
 import { useSelector } from 'react-redux'
 import { themeActions } from '../../store/theme/theme-slice'
 import { ColoredTheme, DarkTheme, LightTheme } from '../../theme'
+import ErrorBoundery from '../ErrorBoundery/ErrorBoundery'
 
 
 const App = () => {
@@ -31,23 +32,25 @@ const App = () => {
 
 
   return (
-    <ThemeContext.Provider value={{ theme, changeTheme }}>
-      <ThemeProvider theme={chosenTheme ?? LightTheme}>
-        <BrowserRouter>
-          <Routes>
-            <Route
-              index
-              path="/"
-              element={<Home />}
-            />
-            <Route
-              path="/settings"
-              element={<Settings />}
-            />
-          </Routes>
-        </BrowserRouter>
-      </ThemeProvider>
-    </ThemeContext.Provider>
+    <ErrorBoundery>
+      <ThemeContext.Provider value={{ theme, changeTheme }}>
+        <ThemeProvider theme={chosenTheme ?? LightTheme}>
+          <BrowserRouter>
+            <Routes>
+              <Route
+                index
+                path="/"
+                element={<Home />}
+              />
+              <Route
+                path="/settings"
+                element={<Settings />}
+              />
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
+      </ThemeContext.Provider>
+    </ErrorBoundery>
   )
 }
 

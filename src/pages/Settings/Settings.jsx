@@ -11,7 +11,7 @@ const Settings = () => {
       <Container>
         <SettingsOptions />
       </Container>
-    </React.Fragment>
+    </React.Fragment >
   )
 }
 
