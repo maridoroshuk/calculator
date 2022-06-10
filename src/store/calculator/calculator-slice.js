@@ -8,7 +8,6 @@ const localData = JSON.parse(
 const initialState = {
   overwrite: false,
   expression: '',
-  operations: ['*', '/', '-', '+', '(', ')'],
   history: localData ?? [],
 }
 
