@@ -18,39 +18,41 @@ const calculatorSlice = createSlice({
   initialState,
   reducers: {
     addDigit(state, { payload }) {
-      if (payload.digit === '±') {
-        if (state.curOperand == null) {
-          return state
-        } else {
+      switch (payload.digit) {
+        case '±':
+          if (state.curOperand == null) {
+            return state
+          }
           state.curOperand = `-${state?.curOperand}`
-        }
-      } else if (
-        payload.digit === '.' &&
-        state.curOperand === null
-      ) {
-        state.curOperand = `0${payload.digit}`
-      } else if (state.overwrite) {
-        if (payload.digit === '.') {
-          state.curOperand = `0${payload.digit}`
-          state.overwrite = false
-        } else {
-          state.curOperand = payload.digit
-          state.overwrite = false
-        }
-      } else if (
-        payload.digit === '0' &&
-        state.curOperand === '0'
-      ) {
-        return state
-      } else if (
-        payload.digit === '.' &&
-        state.curOperand.includes('.')
-      ) {
-        return state
-      } else {
-        state.curOperand = `${state.curOperand || ''}${
-          payload.digit
-        }`
+          break
+        case '.':
+          if (state.curOperand === null) {
+            state.curOperand = `0${payload.digit}`
+          } else if (state.curOperand.includes('.')) {
+            return state
+          } else if (state.overwrite) {
+            state.curOperand = `0${payload.digit}`
+            state.overwrite = false
+          }
+          break
+        case '0':
+          if (state.curOperand === '0') {
+            return state
+          } else {
+            state.curOperand = `${state.curOperand || ''}${
+              payload.digit
+            }`
+          }
+          break
+        default:
+          if (state.overwrite) {
+            state.curOperand = payload.digit
+            state.overwrite = false
+          } else {
+            state.curOperand = `${state.curOperand || ''}${
+              payload.digit
+            }`
+          }
       }
     },
     chooseOperation(state, { payload }) {

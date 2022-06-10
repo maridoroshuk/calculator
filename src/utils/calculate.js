@@ -72,6 +72,11 @@ function Calculator(command) {
     this.value = command.execute(this.value)
     this.history.push(command)
   }
+
+  this.undo = function() {
+    const command = this.history.pop()
+    this.value = command.undo(this.value)
+  }
 }
 
 function Add(valueToAdd) {
@@ -79,6 +84,10 @@ function Add(valueToAdd) {
 
   this.execute = function(currentValue) {
     return currentValue + this.valueToAdd
+  }
+
+  this.undo = function(currentValue) {
+    return currentValue - this.valueToAdd
   }
 }
 
@@ -88,6 +97,10 @@ function Substract(valueToSubstract) {
   this.execute = function(currentValue) {
     return currentValue - this.valueToSubstract
   }
+
+  this.undo = function(currentValue) {
+    return currentValue + this.valueToSubstract
+  }
 }
 
 function Multiply(valueToMultiply) {
@@ -96,6 +109,10 @@ function Multiply(valueToMultiply) {
   this.execute = function(currentValue) {
     return currentValue * this.valueToMultiply
   }
+
+  this.undo = function(currentValue) {
+    return currentValue / this.valueToMultiply
+  }
 }
 
 function Divide(valueToDivide) {
@@ -103,6 +120,10 @@ function Divide(valueToDivide) {
 
   this.execute = function(currentValue) {
     return currentValue / this.valueToDivide
+  }
+
+  this.undo = function(currentValue) {
+    return currentValue * this.valueToDivide
   }
 }
 
