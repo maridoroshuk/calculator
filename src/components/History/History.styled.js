@@ -12,6 +12,9 @@ export const StyledList = styled.ul`
   margin-top: 1rem;
   list-style-type: none;
   flex-direction: column-reverse;
+  max-height: 70vh;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   & li {
     margin-top: 1rem;

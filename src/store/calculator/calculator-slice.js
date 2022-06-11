@@ -33,6 +33,10 @@ const calculatorSlice = createSlice({
           } else if (state.overwrite) {
             state.curOperand = `0${payload.digit}`
             state.overwrite = false
+          } else {
+            state.curOperand = `${state.curOperand || ''}${
+              payload.digit
+            }`
           }
           break
         case '0':

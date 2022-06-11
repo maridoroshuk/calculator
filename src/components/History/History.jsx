@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useId } from 'react'
 import { useSelector } from 'react-redux'
 import { StyledList, HistoryContainer, Heading } from './History.styled'
 
 const History = () => {
   const { history } = useSelector(state => state.calculator)
+  const id = useId()
 
   useEffect(() => {
     localStorage.setItem("history", JSON.stringify(history))
@@ -14,7 +15,7 @@ const History = () => {
       <Heading>History</Heading>
       <StyledList>
         {history.map(item => {
-          return <li key={item}>{item}</li>
+          return <li key={id}>{item}</li>
         })}
       </StyledList>
     </HistoryContainer>

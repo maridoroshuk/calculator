@@ -1,3 +1,11 @@
+import {
+  add,
+  divide,
+  multiply,
+  remainde,
+  subtract,
+} from '../helpers/calculator'
+
 export function calculate({
   curOperand,
   prevOperand,
@@ -8,50 +16,23 @@ export function calculate({
 
   if (isNaN(prev) || isNaN(current)) return ''
 
-  const calculator = new Calculator()
-
-  const add = val => {
-    calculator.execute(new Add(val))
-    return calculator.value
-  }
-
-  const substract = val => {
-    calculator.execute(new Substract(val))
-    return calculator.value
-  }
-
-  const multiply = val => {
-    calculator.execute(new Multiply(val))
-    return calculator.value
-  }
-  const divide = val => {
-    calculator.execute(new Divide(val))
-    return calculator.value
-  }
-  const remainde = val => {
-    calculator.execute(new Remainde(val))
-    return calculator.value
-  }
-
-  add(prev)
-
   let computation = ''
 
   switch (operation) {
     case '+':
-      computation = add(current)
+      computation = add(prev, current)
       break
     case '-':
-      computation = substract(current)
+      computation = subtract(prev, current)
       break
     case '*':
-      computation = multiply(current)
+      computation = multiply(prev, current)
       break
     case '/':
-      computation = divide(current)
+      computation = divide(prev, current)
       break
     case '%':
-      computation = remainde(current)
+      computation = remainde(prev, current)
       break
     default:
       return null
@@ -62,75 +43,4 @@ export function calculate({
   }
 
   return computation.toString()
-}
-
-function Calculator(command) {
-  this.value = 0
-  this.history = []
-
-  this.execute = function(command) {
-    this.value = command.execute(this.value)
-    this.history.push(command)
-  }
-
-  this.undo = function() {
-    const command = this.history.pop()
-    this.value = command.undo(this.value)
-  }
-}
-
-function Add(valueToAdd) {
-  this.valueToAdd = valueToAdd
-
-  this.execute = function(currentValue) {
-    return currentValue + this.valueToAdd
-  }
-
-  this.undo = function(currentValue) {
-    return currentValue - this.valueToAdd
-  }
-}
-
-function Substract(valueToSubstract) {
-  this.valueToSubstract = valueToSubstract
-
-  this.execute = function(currentValue) {
-    return currentValue - this.valueToSubstract
-  }
-
-  this.undo = function(currentValue) {
-    return currentValue + this.valueToSubstract
-  }
-}
-
-function Multiply(valueToMultiply) {
-  this.valueToMultiply = valueToMultiply
-
-  this.execute = function(currentValue) {
-    return currentValue * this.valueToMultiply
-  }
-
-  this.undo = function(currentValue) {
-    return currentValue / this.valueToMultiply
-  }
-}
-
-function Divide(valueToDivide) {
-  this.valueToDivide = valueToDivide
-
-  this.execute = function(currentValue) {
-    return currentValue / this.valueToDivide
-  }
-
-  this.undo = function(currentValue) {
-    return currentValue * this.valueToDivide
-  }
-}
-
-function Remainde(valueToRemainde) {
-  this.valueToRemainde = valueToRemainde
-
-  this.execute = function(currentValue) {
-    return currentValue % this.valueToRemainde
-  }
 }
