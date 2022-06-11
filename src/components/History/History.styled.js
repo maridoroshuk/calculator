@@ -4,7 +4,7 @@ export const HistoryContainer = styled.div`
   align-self: flex-start;
   text-align: start;
   width: 20%;
-  margin: 3rem;
+  margin: 1rem 3rem;
   color: ${({ theme }) => theme.colors.calcColor};
 `
 export const StyledList = styled.ul`

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const PageLayout = styled.div``
 
 export const StyledHeader = styled.header`
-  height: 5rem;
+  height: 10vh;
   padding: 1rem;
   display: flex;
   justify-content: space-between;

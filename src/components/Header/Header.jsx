@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Link, NavLink, Outlet } from 'react-router-dom'
 import { PageLayout, StyledHeader, Logo, Container, Button } from './Header.styled'
 

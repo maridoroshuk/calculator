@@ -1,5 +1,5 @@
 import { calculate } from '../../utils/calculate'
-import { createSlice, current } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const localData = JSON.parse(
   localStorage.getItem('history'),
@@ -60,6 +60,7 @@ const calculatorSlice = createSlice({
       }
     },
     chooseOperation(state, { payload }) {
+      console.log(payload.operation)
       if (
         state.curOperand == null &&
         state.prevOperand == null

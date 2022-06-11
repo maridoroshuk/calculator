@@ -1,47 +1,65 @@
 import { calculatorActions } from '../../store/calculator/calculator-slice'
-import React from 'react'
+import React, { useId } from 'react'
 import { useDispatch } from 'react-redux'
-import OperationButton from './Button/OperationButton'
-import DigitButton from './Button/DigitButton'
-import { StyledButton } from './Button/Button.styled'
+import { StyledButton } from './Keypad.styled'
+
+const BUTTONS = [
+	"C", "7", "8", "9", "*",
+	"-", "4", "5", "6", "/",
+	"+", "1", "2", "3", "=",
+	".", "0", " % ", "±", "CE",
+]
 
 const Keypad = () => {
+	const id = useId()
 	const dispatch = useDispatch()
 
-	const clearHandler = () => {
-		dispatch(calculatorActions.clear())
+	const buttonClickHandler = e => {
+		const digit = e.target.value
+		switch (digit) {
+			case "-":
+				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				break
+			case "+":
+				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				break
+			case "*":
+				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				break
+			case "/":
+				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				break
+			case "%":
+				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				break
+			case "=":
+				dispatch(calculatorActions.evaluate())
+				break
+			case "C":
+				dispatch(calculatorActions.deleteDigit())
+				break
+			case "CE":
+				dispatch(calculatorActions.clear())
+				break
+			default:
+				dispatch(calculatorActions.addDigit({ digit }))
+		}
 	}
 
-	const evaluateHandler = () => {
-		dispatch(calculatorActions.evaluate())
-	}
-
-	const deleteDigitHandler = () => {
-		dispatch(calculatorActions.deleteDigit())
-	}
 
 	return (
 		<React.Fragment>
-			<StyledButton onClick={deleteDigitHandler}>C</StyledButton>
-			<DigitButton dispatch={dispatch} digit="7" />
-			<DigitButton dispatch={dispatch} digit="8" />
-			<DigitButton dispatch={dispatch} digit="9" />
-			<OperationButton dispatch={dispatch} operation="*" />
-			<OperationButton dispatch={dispatch} operation="-" />
-			<DigitButton dispatch={dispatch} digit="4" />
-			<DigitButton dispatch={dispatch} digit="5" />
-			<DigitButton dispatch={dispatch} digit="6" />
-			<OperationButton dispatch={dispatch} operation="/" />
-			<OperationButton dispatch={dispatch} operation="+" />
-			<DigitButton dispatch={dispatch} digit="1" />
-			<DigitButton dispatch={dispatch} digit="2" />
-			<DigitButton dispatch={dispatch} digit="3" />
-			<StyledButton onClick={evaluateHandler}>=</StyledButton>
-			<DigitButton dispatch={dispatch} digit="." />
-			<DigitButton dispatch={dispatch} digit="0" />
-			<OperationButton dispatch={dispatch} operation="%" >%</OperationButton>
-			<DigitButton dispatch={dispatch} digit="±" >±</DigitButton>
-			<StyledButton onClick={clearHandler}>CE</StyledButton>
+			{BUTTONS.map(val => {
+
+				return (
+					<StyledButton
+						onClick={buttonClickHandler}
+						key={id}
+						value={val}>
+						{val}
+					</StyledButton>
+				)
+			})}
 		</React.Fragment>
 	)
 }
