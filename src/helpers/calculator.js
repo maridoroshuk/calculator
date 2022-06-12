@@ -1,88 +1,78 @@
+const addRes = (x, y) => x + y
+const subRes = (x, y) => x - y
+const mulRes = (x, y) => x * y
+const divRes = (x, y) => x / y
+const remRes = (x, y) => x % y
+
+const Command = function(execute, undo, prev, cur) {
+  this.execute = execute
+  this.undo = undo
+  this.prev = prev
+  this.cur = cur
+}
+
+function AddCommand(prev, cur) {
+  return new Command(addRes, subRes, prev, cur)
+}
+
+function SubCommand(prev, cur) {
+  return new Command(subRes, addRes, prev, cur)
+}
+
+function MulCommand(prev, cur) {
+  return new Command(mulRes, divRes, prev, cur)
+}
+
+function DivCommand(prev, cur) {
+  return new Command(divRes, mulRes, prev, cur)
+}
+
+function RemCommand(prev, cur) {
+  return new Command(remRes, mulRes, prev, cur)
+}
+
 function Calculator() {
-  this.value = 0
-  this.history = []
+  const commands = []
+  let result = null
 
-  this.execute = function(command, prev, cur) {
-    this.value = command.execute(prev, cur)
-    this.history.push(command)
-  }
+  return {
+    execute: function(command) {
+      result = command.execute(command.prev, command.cur)
+      commands.push(command)
+    },
 
-  this.undo = function() {
-    const command = this.history.pop()
-    this.value = command.undo(this.value)
-  }
-}
+    undo: function() {
+      const command = commands.pop()
+      result = command.undo(command.prev, command.cur)
+    },
 
-function Add() {
-  this.execute = function(prev, cur) {
-    return prev + cur
-  }
-
-  this.undo = function(prev, cur) {
-    return cur - prev
+    getCurrentValue: function() {
+      return result
+    },
   }
 }
 
-function Subtract() {
-  this.execute = function(prev, cur) {
-    return prev - cur
-  }
-
-  this.undo = function(prev, cur) {
-    return prev + cur
-  }
-}
-
-function Multiply() {
-  this.execute = function(prev, cur) {
-    return prev * cur
-  }
-
-  this.undo = function(prev, cur) {
-    return cur / prev
-  }
-}
-
-function Divide() {
-  this.execute = function(prev, cur) {
-    return prev / cur
-  }
-
-  this.undo = function(prev, cur) {
-    return prev * cur
-  }
-}
-
-function Remainde() {
-  this.execute = function(prev, cur) {
-    return prev % cur
-  }
-}
+const calculator = new Calculator()
 
 export const add = (prev, cur) => {
-  const calculator = new Calculator()
-  calculator.execute(new Add(), prev, cur)
-  return calculator.value
+  calculator.execute(new AddCommand(prev, cur))
+  return calculator.getCurrentValue()
 }
 
 export const subtract = (prev, cur) => {
-  const calculator = new Calculator()
-  calculator.execute(new Subtract(), prev, cur)
-  return calculator.value
+  calculator.execute(new SubCommand(prev, cur))
+  return calculator.getCurrentValue()
 }
 
 export const multiply = (prev, cur) => {
-  const calculator = new Calculator()
-  calculator.execute(new Multiply(), prev, cur)
-  return calculator.value
+  calculator.execute(new MulCommand(prev, cur))
+  return calculator.getCurrentValue()
 }
 export const divide = (prev, cur) => {
-  const calculator = new Calculator()
-  calculator.execute(new Divide(), prev, cur)
-  return calculator.value
+  calculator.execute(new DivCommand(prev, cur))
+  return calculator.getCurrentValue()
 }
 export const remainde = (prev, cur) => {
-  const calculator = new Calculator()
-  calculator.execute(new Remainde(), prev, cur)
-  return calculator.value
+  calculator.execute(new RemCommand(prev, cur))
+  return calculator.getCurrentValue()
 }

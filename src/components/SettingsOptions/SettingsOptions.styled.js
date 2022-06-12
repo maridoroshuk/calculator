@@ -16,6 +16,9 @@ export const ThemeSwitcher = styled.div`
     font-size: 1.2rem;
     border-radius: 20px;
     cursor: pointer;
+    color: ${({ theme }) => theme.colors.secondary}
+    background-color: ${({ theme }) =>
+      theme.colors.primary};  
   }
 `
 export const ClearHistory = styled.button`
@@ -24,4 +27,11 @@ export const ClearHistory = styled.button`
   font-size: 1.2rem;
   border-radius: 20px;
   cursor: pointer;
+  color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.primary};
+
+  &:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+  }
 `

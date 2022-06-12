@@ -30,7 +30,6 @@ const App = () => {
   }, [theme])
 
 
-
   return (
     <ErrorBoundery>
       <ThemeContext.Provider value={{ theme, changeTheme }}>

@@ -60,7 +60,6 @@ const calculatorSlice = createSlice({
       }
     },
     chooseOperation(state, { payload }) {
-      console.log(payload.operation)
       if (
         state.curOperand == null &&
         state.prevOperand == null
