@@ -1,7 +1,8 @@
 import { calculatorActions } from '../../store/calculator/calculator-slice'
-import React, { useId } from 'react'
+import React, { useId, useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { StyledButton } from './Keypad.styled'
+import { addDigit, chooseOperation } from '../../helpers/digit-validation'
 
 const BUTTONS = [
 	"C", "7", "8", "9", "*",
@@ -10,7 +11,7 @@ const BUTTONS = [
 	".", "0", "%", "±", "CE",
 ]
 
-const Keypad = () => {
+const Keypad = ({ onSetState }) => {
 	const id = useId()
 	const dispatch = useDispatch()
 
@@ -18,34 +19,32 @@ const Keypad = () => {
 		const digit = e.target.value
 		switch (digit) {
 			case "-":
-				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				onSetState(chooseOperation(digit))
 				break
 			case "+":
-				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				chooseOperation(digit)
 				break
 			case "*":
-				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				chooseOperation(digit)
 				break
 			case "/":
-				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				chooseOperation(digit)
 				break
 			case "%":
-				dispatch(calculatorActions.chooseOperation({ operation: digit }))
+				chooseOperation(digit)
 				break
 			case "=":
-				dispatch(calculatorActions.evaluate())
+				chooseOperation(digit)
 				break
 			case "C":
-				dispatch(calculatorActions.deleteDigit())
 				break
 			case "CE":
-				dispatch(calculatorActions.clear())
 				break
 			default:
-				dispatch(calculatorActions.addDigit({ digit }))
+				onSetState(() => addDigit(digit))
+
 		}
 	}
-
 
 	return (
 		<React.Fragment>
