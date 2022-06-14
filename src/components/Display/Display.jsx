@@ -1,6 +1,4 @@
-import { state } from '../../helpers/digit-validation'
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
 import { StyledDisplay, PrevOperand, CurOperand } from './Display.styled'
 
 const Display = ({ prevOperand, operation, curOperand }) => {
