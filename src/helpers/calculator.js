@@ -1,8 +1,10 @@
-const addRes = (x, y) => x + y
-const subRes = (x, y) => x - y
-const mulRes = (x, y) => x * y
-const divRes = (x, y) => x / y
-const remRes = (x, y) => x % y
+import {
+  addRes,
+  divRes,
+  mulRes,
+  remRes,
+  subRes,
+} from './mathOperations'
 
 const Command = function(execute, undo, prev, cur) {
   this.execute = execute
