@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const PageLayout = styled.div``
 
-export const StyledHeader = styled.header`
+export const StyledHeader = styled.nav`
   height: 10vh;
   padding: 1rem;
   display: flex;
@@ -37,7 +37,7 @@ export const Button = styled.button`
   display: inline-block;
   color: ${({ theme }) => theme.colors.secondary};
   font-size: 1em;
-  margin-left: 1rem;
+  margin-right: 2rem;
   border: none;
   display: block;
   background-color: transparent;
