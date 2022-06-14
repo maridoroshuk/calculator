@@ -1,10 +1,10 @@
-import React, { useEffect, useId } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
 import { StyledList, HistoryContainer, Heading } from './History.styled'
 
 const History = () => {
   const { history } = useSelector(state => state.calculator)
-  const id = useId()
 
   useEffect(() => {
     localStorage.setItem("history", JSON.stringify(history))
@@ -15,7 +15,7 @@ const History = () => {
       <Heading>History</Heading>
       <StyledList>
         {history.map(item => {
-          return <li key={id}>{item}</li>
+          return <li key={uuidv4()}>{item}</li>
         })}
       </StyledList>
     </HistoryContainer>

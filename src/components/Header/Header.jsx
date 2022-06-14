@@ -13,15 +13,15 @@ const Header = () => {
         </Logo>
         <Container>
           <Button>
-            <NavLink activeClassName="active" to="/">Home</NavLink>
+            <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/">Home</NavLink>
           </Button>
           <Button >
-            <NavLink activeClassName="active" to="/settings">Settings</NavLink>
+            <NavLink className={({ isActive }) => isActive ? "active" : ""} to="/settings">Settings</NavLink>
           </Button>
         </Container>
       </StyledHeader>
       <Outlet />
-    </PageLayout>
+    </PageLayout >
   )
 }
 

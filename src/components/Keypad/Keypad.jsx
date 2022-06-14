@@ -1,5 +1,6 @@
-import React, { useId, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid'
 import { StyledButton } from './Keypad.styled'
 import { addDigit, chooseOperation, clear, deleteDigit, evaluate } from '../../helpers/digit-validation'
 
@@ -11,7 +12,6 @@ const BUTTONS = [
 ]
 
 const Keypad = ({ onUpdateState, onAddHistory }) => {
-	const id = useId()
 	const dispatch = useDispatch()
 
 	const buttonClickHandler = e => {
@@ -55,7 +55,7 @@ const Keypad = ({ onUpdateState, onAddHistory }) => {
 				return (
 					<StyledButton
 						onClick={buttonClickHandler}
-						key={id}
+						key={uuidv4()}
 						value={val}>
 						{val}
 					</StyledButton>

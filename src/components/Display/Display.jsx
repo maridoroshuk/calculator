@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux'
 import { StyledDisplay, PrevOperand, CurOperand } from './Display.styled'
 
 const Display = ({ prevOperand, operation, curOperand }) => {
-	console.log(curOperand)
 	return (
 		<StyledDisplay>
 			<PrevOperand>{prevOperand} {operation}</PrevOperand>
