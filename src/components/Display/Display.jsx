@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { StyledDisplay, PrevOperand, CurOperand } from './Display.styled'
 
-const Display = ({ state }) => {
+const Display = ({ prevOperand, operation, curOperand }) => {
+	console.log(curOperand)
 	return (
 		<StyledDisplay>
-			<PrevOperand>{state?.prevOperand} {state?.operation}</PrevOperand>
-			<CurOperand>{state?.curOperand}</CurOperand>
+			<PrevOperand>{prevOperand} {operation}</PrevOperand>
+			<CurOperand>{curOperand}</CurOperand>
 		</StyledDisplay>
 	)
 }

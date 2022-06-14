@@ -1,25 +1,38 @@
+import { calculatorActions } from '../../store/calculator/calculator-slice'
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import Display from '../Display/Display'
 import Keypad from '../Keypad/Keypad'
 import { Container } from './Calculator.styled'
 
 const Calculator = () => {
-	const [state, setState] = useState({})
+	const [prevOperand, setPrevOperand] = useState(null)
+	const [operation, setOperation] = useState(null)
+	const [curOperand, setCurOperand] = useState(null)
 
-	const setStateHandler = payload => {
-		console.log(payload)
-		setState(payload)
-		console.log(state)
+	const dispatch = useDispatch()
+
+
+	const updateStateHandler = payload => {
+		setPrevOperand(payload?.prevOperand)
+		setOperation(payload?.operation)
+		setCurOperand(payload?.curOperand)
 	}
 
+	const addToHistoryHandler = () => {
+		dispatch(calculatorActions.addHistory({ prevOperand, operation, curOperand }))
+	}
 
 	return (
 		<Container>
 			<Display
-				state={state}
+				prevOperand={prevOperand}
+				operation={operation}
+				curOperand={curOperand}
 			/>
 			<Keypad
-				onSetState={setState}
+				onUpdateState={updateStateHandler}
+				onAddHistory={addToHistoryHandler}
 			/>
 		</Container>
 	)
