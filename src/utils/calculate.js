@@ -16,7 +16,7 @@ export function calculate({
 
   if (isNaN(prev) || isNaN(current)) return ''
 
-  let computation = ''
+  let computation
 
   switch (operation) {
     case '+':
@@ -38,9 +38,9 @@ export function calculate({
       return null
   }
 
-  if (!(computation % 1 === 0)) {
-    computation = computation.toFixed(3)
+  if (computation % 1 === 0) {
+    return computation
   }
 
-  return computation.toString()
+  return computation.toFixed(3)
 }

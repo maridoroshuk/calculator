@@ -1,4 +1,3 @@
-import { calculate } from '../../utils/calculate'
 import { createSlice } from '@reduxjs/toolkit'
 
 const localData = JSON.parse(
@@ -14,10 +13,16 @@ const calculatorSlice = createSlice({
   initialState,
   reducers: {
     addHistory(state, { payload }) {
-      state.history = [
-        ...state.history,
-        `${payload.prevOperand} ${payload.operation} ${payload.curOperand}`,
-      ]
+      if (
+        payload.prevOperand &&
+        payload.operation &&
+        payload.curOperand
+      ) {
+        state.history = [
+          ...state.history,
+          `${payload.prevOperand} ${payload.operation} ${payload.curOperand}`,
+        ]
+      }
     },
     clearHistory(state) {
       state.history = []
