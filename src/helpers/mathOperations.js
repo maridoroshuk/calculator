@@ -1,5 +1,5 @@
-export const addRes = (x, y) => x.toFixed(3) + y.toFixed(3)
-export const subRes = (x, y) => x.toFixed(3) - y.toFixed(3)
-export const mulRes = (x, y) => x.toFixed(3) * y.toFixed(3)
-export const divRes = (x, y) => x.toFixed(3) / y.toFixed(3)
-export const remRes = (x, y) => x.toFixed(3) % y.toFixed(3)
+export const addRes = (x, y) => x + y
+export const subRes = (x, y) => x - y
+export const mulRes = (x, y) => x * y
+export const divRes = (x, y) => x / y
+export const remRes = (x, y) => x % y

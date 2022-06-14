@@ -12,8 +12,9 @@ export function addDigit(digit) {
     case '±':
       if (state.curOperand == null) {
         return state
+      } else if (!state.curOperand.includes('-')) {
+        state.curOperand = `-${state?.curOperand}`
       }
-      state.curOperand = `-${state?.curOperand}`
       break
     case '.':
       if (state.curOperand === null) {

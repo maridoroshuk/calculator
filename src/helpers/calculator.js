@@ -65,7 +65,6 @@ export const subtract = (prev, cur) => {
   calculator.execute(new SubCommand(prev, cur))
   return calculator.getCurrentValue()
 }
-
 export const multiply = (prev, cur) => {
   calculator.execute(new MulCommand(prev, cur))
   return calculator.getCurrentValue()
