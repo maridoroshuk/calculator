@@ -11,9 +11,9 @@
 
 ## Key Features
 
-- add, subtract, multiply, divide, remainde
-- delete one digit 
-- clean all expression state
+- add (+) , subtract (-), multiply (\*) , divide(/\), remainde (%)
+- delete one digit (C)
+- clean all expression state (CE)
 - swich wrong operator 
 - setting 0.5 as well as .5
 - math operation history
